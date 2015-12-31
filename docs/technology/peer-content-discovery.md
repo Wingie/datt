@@ -18,7 +18,7 @@ One Naive approach would be to broadcast to all peers that "i need any articles 
 The drawbacks of this approach -
 * Time : You can basically never know when your search is truly over as you can get a peer msg from a slow peer (maybe put your query in queue) long after you are done caring about the search term. 
 * Control : Once a search is made, there is no way to pause or cancel the search. you will be bombarded with result pings whether you are want them or not.
-* Trust : This method opens up a very nice way for a malicious peer on the network to easily create havoc by shoving results of spam in peer's who haven't requested it..
+* Trust : This method opens up a very nice way for a malicious peer on the network to easily create havoc by shoving results of spam to peers who hadnt requested it..
 
 ## Proposal : Centralize (__some of__) the things
 
@@ -37,11 +37,11 @@ Recursively traversing this list will provide a decent method of "__exploring__"
 so the architecture of such a network will look like this
 
 ```
-(nodes) -> (rendezvouz servers) <- (nodes)
+(nodes) -> (rendezvouz server 1) <- (nodes)
                     ||
-(nodes) -> (rendezvouz servers) <- (nodes)
+(nodes) -> (rendezvouz server 2) <- (nodes)
                     ||
-(nodes) -> (rendezvouz servers) <- (nodes)
+(nodes) -> (rendezvouz server 3) <- (nodes)
 ```
 
 rendezvouz servers form a sort of backbone that connect the network organically.
