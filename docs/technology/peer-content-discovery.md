@@ -20,7 +20,7 @@ The drawbacks of this approach -
 * Control : Once a search is made, there is no way to pause or cancel the search. you will be bombarded with result pings whether you are want them or not.
 * Trust : This method opens up a very nice way for a malicious peer on the network to easily create havoc by shoving results of spam in peer's who haven't requested it..
 
-## Proposal : Centralize (some of) the things
+## Proposal : Centralize (__some of__) the things
 
 If you think about it, a rendezvouz server is a point of centralization. 
 Although - lots of individual rendezvouz servers make a decentralized network.
@@ -32,7 +32,7 @@ Rendezvouz servers, when they connect to other rendezvouz servers can provide th
 * List of all rendezvouz servers that it knows
 * List of all nodes connected to it
 
-Recursively traversing this list will provide a decent method of "exploring" the peers on the network.
+Recursively traversing this list will provide a decent method of "__exploring__" the peers on the network.
 
 so the architecture of such a network will look like this
 
@@ -46,7 +46,7 @@ so the architecture of such a network will look like this
 
 rendezvouz servers form a sort of backbone that connect the network organically.
 
-## Proposal : Search must always be local
+## Search must always be local
 
 A rendezvouz server can contain an index of every content that every node has on the network.
 
@@ -64,7 +64,7 @@ Rendezvouz servers serve to provide a backbone network and assist peer nodes to 
 
 To maintain the idea of a completely decentralized network, rendezvouz servers should not host content themselves.
 
-Over time there will be a significant overhead in maintaining the indexes as it can grow in propotion to the amount of content on the network. There can be an bitcoin incentive for people to run rendezvouz servers also. Although it might not be the best idea to actually charge bitcoin per search, a compromise would be for node to "subscribe" to be able to query the rendezvouz servers indexes for a monthly 0.25$ fee.
+Over time there will be a significant overhead in maintaining the indexes as it can grow in propotion to the amount of content on the network. There __could__ be an bitcoin incentive for people to run rendezvouz servers. Although it might not be the best idea to actually charge bitcoin per search, a compromise would be for node to __"subscribe"__ to be able to query the rendezvouz servers indexes for a monthly 0.25$ fee.
 
 A further model would be to allow people running rendezvouz servers to be able to adjust their pricing in relation to the size of their index. So rendezvouz servers having higher index coverage will have higher number of nodes connecting to them.
 
