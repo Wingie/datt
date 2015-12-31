@@ -34,6 +34,18 @@ Rendezvouz servers, when they connect to other rendezvouz servers can provide th
 
 Recursively traversing this list will provide a decent method of "exploring" the peers on the network.
 
+so the architecture of such a network will look like this
+
+```
+(nodes) -> (rendezvouz servers) <- (nodes)
+                    ||
+(nodes) -> (rendezvouz servers) <- (nodes)
+                    ||
+(nodes) -> (rendezvouz servers) <- (nodes)
+```
+
+rendezvouz servers form a sort of backbone that connect the network organically.
+
 ## Proposal : Search must always be local
 
 A rendezvouz server can contain an index of every content that every node has on the network.
@@ -45,3 +57,15 @@ i.e. a distribution mechanism must be designed (maybe similar to raft consensus 
 This would enable us to keep distributed mechanism in place while providing the option for a decent fast search.
 
 This would mean that every node will query their parent rendezvouz server for a query and the results will be much faster.
+
+## Content is always requested from the Peer Node
+
+Rendezvouz servers serve to provide a backbone network and assist peer nodes to identfy / discover content on the network without putting undue stress on it.
+
+To maintain the idea of a completely decentralized network, rendezvouz servers should not host content themselves.
+
+Over time there will be a significant overhead in maintaining the indexes as it can grow in propotion to the amount of content on the network. There can be an bitcoin incentive for people to run rendezvouz servers also. Although it might not be the best idea to actually charge bitcoin per search, a compromise would be for node to "subscribe" to be able to query the rendezvouz servers indexes for a monthly 0.25$ fee.
+
+A further model would be to allow people running rendezvouz servers to be able to adjust their pricing in relation to the size of their index. So rendezvouz servers having higher index coverage will have higher number of nodes connecting to them.
+
+It is to be noted through, that much like bitcoin is today, this approach will make it cost prohitive for new players to compete in the ecosystem once the network has grown large enough to reach "critical mass" and there are a fair number of existing trustworthy rendezvouz server brands existing in the ecosystem.
