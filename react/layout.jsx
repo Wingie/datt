@@ -54,6 +54,9 @@ let Layout = React.createClass({
     return asink(function *() {
       let dattcore = this.props.dattcore
       let n = yield dattcore.asyncNumActiveConnections()
+      let l = yield dattcore.asyncListActivePeers()
+      console.log("handlePeersConnection",n);
+      console.log("asyncListActivePeers!",n);
       this.setState({
         numActiveConnections: n
       })

@@ -17,6 +17,8 @@ let MsgPong = require('./msg-pong')
 let Peers = require('./peers')
 let Struct = require('fullnode/lib/struct')
 let asink = require('asink')
+let Msg = require('./msg')
+let network = require('./network-browser-webrtc')
 
 function CorePeers (config, db, dbpeers, peers) {
   if (!(this instanceof CorePeers)) {
@@ -109,7 +111,7 @@ CorePeers.prototype.asyncHandleMsg = function (obj) {
     // Emit all network message objects so that a listener can see all messages
     // if desired.
     this.emit('msg', obj)
-
+    console.log('msg',obj)
     let msg = obj.msg
     let connection = obj.connection
     let network = obj.network
@@ -125,6 +127,9 @@ CorePeers.prototype.asyncHandleMsg = function (obj) {
         case 'contentauth':
           yield this.asyncHandleMsgContentAuth(obj)
           break
+        case 'test':
+          console.log('!!!!-see-msg',obj.msg.databuf.toString())
+          break;
         default:
           let error = new Error('asyncHandleMsg unknown cmd: ' + cmd)
           this.disconnectFromError(network, connection, error)
@@ -194,6 +199,14 @@ CorePeers.prototype.close = function () {
 }
 
 CorePeers.prototype.numActiveConnections = function () {
+  return this.peers.numActiveConnections()
+}
+
+CorePeers.prototype.ListActivePeers = function () {
+  console.log("inside ListActivePeers",this.peers.toJSON())
+  let msg_test =  Msg().setCmd('test').setData(new Buffer("232"))
+  console.log("network",network.asyncInitialize)
+  this.peers.broadcastMsg(msg_test)
   return this.peers.numActiveConnections()
 }
 

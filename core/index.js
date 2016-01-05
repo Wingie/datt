@@ -324,6 +324,10 @@ DattCore.prototype.asyncNumActiveConnections = function () {
   return Promise.resolve(this.corepeers.numActiveConnections())
 }
 
+DattCore.prototype.asyncListActivePeers = function () {
+  return Promise.resolve(this.corepeers.ListActivePeers())
+}
+
 DattCore.prototype.broadcastMsg = function (msg) {
   this.corepeers.broadcastMsg(msg)
   return this
